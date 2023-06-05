@@ -1,12 +1,14 @@
 const Tweets = {
     createTable: `
-        CREATE TABLE IF NOT EXISTS tweets (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            content TEXT NOT NULL,
-            user_id INTEGER NOT NULL,
-            created_at DATETIME NOT NULL
-        );
-    `,
+            CREATE TABLE IF NOT EXISTS tweets (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                content TEXT NOT NULL,
+                user_id INTEGER NOT NULL,
+                created_at DATETIME NOT NULL
+            );
+        `,
+    create: `INSERT INTO tweets (content, user_id, created_at) VALUES (?, ?, ?);`,
+    findAll: `SELECT * FROM tweets;`,
 };
 
 const Users = {
@@ -18,6 +20,8 @@ const Users = {
             created_at DATETIME NOT NULL
         );
     `,
+    create: `INSERT INTO users (name, email, created_at) VALUES (?, ?, ?);`,
+    findAll: `SELECT * FROM users;`,
 };
 
 module.exports = {
